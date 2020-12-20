@@ -51,7 +51,7 @@ jobs:
       - name: Prepare artifacts
         working-directory: symfony-docs
         run: |
-          mv output/${{ matrix.symfony }}/epub/SymfonyFrameworkDocumentation.epub output/${{ matrix.symfony }}/docs.epub
+          mv output/${{ matrix.symfony }}/epub/*.epub output/${{ matrix.symfony }}/docs.epub
 
       - name: Artifacts
         uses: actions/upload-artifact@v2
