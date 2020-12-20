@@ -40,7 +40,6 @@ jobs:
 
       - name: Build Epub
         working-directory: symfony-docs
-        continue-on-error: true
         run: |
           docker run --rm -v "${PWD}/output/${{ matrix.symfony }}:/output" --user="$(id -u):$(id -g)" symfony-docs-builder epub
 
@@ -51,12 +50,13 @@ jobs:
 
       - name: Prepare artifacts
         working-directory: symfony-docs
-        if: ${{ success() }}
+        continue-on-error: true
         run: |
           mv output/${{ matrix.symfony }}/epub/*.epub output/${{ matrix.symfony }}/docs.epub
 
       - name: Artifacts
         uses: actions/upload-artifact@v2
+        if: ${{ success() }}
         with:
           name: ${{ matrix.symfony }}
           path: |
