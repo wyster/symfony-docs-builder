@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        symfony: ['4.4', '5.2', '5.x']
+        symfony: ['4.4', '5.4', '6.2']
 
     steps:
       - name: Checkout the repo
